@@ -1,0 +1,35 @@
+proxy_dynamic: "https://svip.kdlapi.com/api/getproxy/?orderid=972428229833184&num=1000&protocol=1&method=1&quality=2&sep=1"
+csdn_pool: 5
+data_base:
+  host: "127.0.0.1"
+  port: "3306"
+  data_base_name: "data_center"
+  user_name: "root"
+  user_password: "root"
+service:
+  host: "127.0.0.1"
+  port: "6379"
+  db: ""
+  auth: ""
+  pre: "service"
+  push_name: "service.push"
+  pop_name: "service.push"
+gateway:
+  host: "127.0.0.1"
+  port: "6379"
+  db: ""
+  auth: ""
+  pre: "gateway"
+  push_name: "push"
+  pop_name: "push"
+source:
+  host: "127.0.0.1"
+  port: "6379"
+  db: ""
+  auth: ""
+  pre: "source"
+  push_name: "source.push"
+  pop_name: "source.push"
+
+
+

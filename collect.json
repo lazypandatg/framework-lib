@@ -1,0 +1,102 @@
+[
+  {
+    "Status":true,
+    "Start": "https://bolg.csdn.com/",
+    "TableName": "news_eol_cn",
+    "Title": ".title",
+    "Content": ".article",
+    "Tag ": ".info",
+    "Confine": "bolg.csdn.com",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://news.21cn.com/",
+    "TableName": "news_eol_cn",
+    "Title": ".title",
+    "Content": ".article",
+    "Tag ": ".info",
+    "Confine": "news.eol.cn",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://news.21cn.com/",
+    "TableName": "news_eol_cn",
+    "Title": ".title",
+    "Content": ".article",
+    "Tag ": ".info",
+    "Confine": "news.eol.cn",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://news.21cn.com/",
+    "TableName": "news_eol_cn",
+    "Title": ".title",
+    "Content": ".article",
+    "Tag ": ".info",
+    "Confine": "news.eol.cn",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "http://www.farmer.com.cn/",
+    "TableName": "farmer_com_cn",
+    "Title": ".article-title",
+    "Content": ".article-main",
+    "Tag ": ".article-meta",
+    "Confine": "farmer.com.cn",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "http://edu.china.com.cn/",
+    "TableName": "edu_china_com_cn",
+    "Title": ".bigpic h1",
+    "Content": ".content",
+    "Tag ": ".source",
+    "Confine": "edu.china.com.cn",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://www.tom.com/",
+    "TableName": "www_tom_com",
+    "Title": ".news_box_title",
+    "Content": ".news_box_text",
+    "Tag ": ".news_box_infor",
+    "Confine": "tom.com",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://news.21cn.com/",
+    "TableName": "21cn_com",
+    "Title": ".title",
+    "Content": ".article_text",
+    "Tag ": ".news_box_infor",
+    "Confine": "21cn.com",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://chejiahao.autohome.com.cn/",
+    "TableName": "chejiahao_autohome_com_cn",
+    "Title": ".title",
+    "Content": ".article_text",
+    "Tag ": ".articleTag",
+    "Confine": "tom.com",
+    "AllUrl": false
+  },
+  {
+    "Status":true,
+    "Start": "https://news.jc001.cn/",
+    "TableName": "news_jc001_cn",
+    "Title": ".newsDetailCon h1",
+    "Content": ".mainCnt",
+    "Tag ": ".newsDetailCon .desc",
+    "Confine": "news.jc001.cn",
+    "AllUrl": false
+  }
+]
