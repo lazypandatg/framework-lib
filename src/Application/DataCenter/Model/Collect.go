@@ -133,7 +133,7 @@ func (_this *collect) Listen() {
 	}
 	for true {
 		if len(_this.Job().Data) == 0 {
-			time.Sleep(5 * time.Second)
+			time.Sleep(20 * time.Second)
 		}
 	}
 }
