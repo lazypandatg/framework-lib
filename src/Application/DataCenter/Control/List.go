@@ -9,12 +9,12 @@ import (
 	"framework-lib/src/Lib/DataSource"
 	"framework-lib/src/Lib/Message"
 	"framework-lib/src/Manage"
-	"log"
 )
 
 var _ = MessageLib.AddAction("add", func(fieldList []DataSourceLib.FieldModel) MessageLib.QueueItem {
-	log.Println("list入库",fieldList)
-	go Manage.DataBase.Insert(fieldList)
+	//log.Println("list入库",fieldList)
+	//go Manage.DataBase.Insert(fieldList)
+	Manage.BatchInsert.Add(fieldList)
 	return MessageLib.NewQueueItem(true, 0)
 })
 var _ = MessageLib.AddAction("content/add", func(list DataCenterModel.List) MessageLib.QueueItem {

@@ -18,7 +18,6 @@ func main() {
 
 	//go DataCenterService.WangYi.Listen()
 	//go DataCenterService.Jyb.Listen()
-
 	//go DataCenterService.Ithome.Listen()
 
 	go Manage.Service.Listener()

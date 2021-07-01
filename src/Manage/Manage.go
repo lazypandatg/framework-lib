@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"framework-lib/src/Lib/Message"
 	"framework-lib/src/Lib/MySql"
+	"framework-lib/src/Lib/Queue"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )
@@ -12,6 +13,7 @@ var DataBase = &MySqlLib.DataSource{}
 var Service = &MessageLib.Queue{}
 var Source = &MessageLib.Queue{}
 var Gateway = &MessageLib.Queue{}
+var BatchInsert = &Queue.BatchInsertQueue{TableList: map[string][]MySqlLib.InsertModel{}}
 
 func init() {
 	myConfig := load()
@@ -19,6 +21,7 @@ func init() {
 	Source.Init(myConfig.Source)
 	Service.Init(myConfig.Service)
 	Gateway.Init(myConfig.Gateway)
+	BatchInsert.DataBase = DataBase
 }
 func load() Config {
 	yamlFile, err := ioutil.ReadFile("develop.yaml")

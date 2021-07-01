@@ -11,22 +11,31 @@ type InsertModel struct {
 	FieldBaseModel
 }
 
+func (_this *InsertModel) GetBatchSql() (string, string, string, []interface{}) {
+	field, setList, value := _this.GetField(_this.FieldList)
+	ValueList := value
+	table := _this.GetTable(_this.FieldList)
+	sql := "(" + strings.Join(setList, ",") + ")"
+	return table, strings.Join(field, ","), sql, ValueList
+}
+
 func (_this *InsertModel) Sql() (string, []interface{}) {
 
 	field, setList, value := _this.GetField(_this.FieldList)
-	_this.ValueList = append(_this.ValueList, value...)
+
+	ValueList := value
 
 	table := _this.GetTable(_this.FieldList)
 
-	where, value := _this.GetWhere(_this.FieldList)
+	where, whereValue := _this.GetWhere(_this.FieldList)
 
-	_this.ValueList = append(_this.ValueList, value...)
-	//log.Println(where)
+	ValueList = append(ValueList, whereValue...)
+
 	if where == "" {
-		sql := " insert into " + table + " (" + strings.Join(field, ",") + ") value (" + strings.Join(setList, ",") + ")"
-		return sql, _this.ValueList
+		sql := " insert into " + table + " (" + strings.Join(field, ",") + ") values (" + strings.Join(setList, ",") + ")"
+		return sql, ValueList
 	} else {
 		sql := " insert into " + table + " (" + strings.Join(field, ",") + ") select " + strings.Join(setList, ",") + where
-		return sql, _this.ValueList
+		return sql, ValueList
 	}
 }
