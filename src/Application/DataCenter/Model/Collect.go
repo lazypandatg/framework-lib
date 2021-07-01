@@ -39,13 +39,18 @@ func (_this *collect) Add(list []DataSourceLib.FieldModel) int64 {
 	return id
 }
 func (_this *collect) JobItem(v List) {
-	myUrl, _ := url.Parse(v.Url)
+
+	myUrl, err := url.Parse(strings.Trim(v.Url, " "))
+	//log.Println(err,_this,myUrl )
+	if err != nil {
+		return
+	}
 	file := "d://data_center/" + _this.TableName + "/" + myUrl.Host + "/"
 	for i := 0; i+4 < len(myUrl.Path); i = i + 4 {
 		file = file + myUrl.Path[i:i+4]
 	}
 	file = file + ".json"
-	_, err := os.Stat(file)
+	_, err = os.Stat(file)
 
 	if err == nil {
 		log.Println("已经存在", v)
@@ -64,7 +69,26 @@ func (_this *collect) JobItem(v List) {
 		if strings.Index(itemUrl, "?") != -1 && !_this.AllUrl {
 			itemUrl = itemUrl[:strings.Index(itemUrl, "?")]
 		}
+		myMd5 := fmt.Sprintf("%x", md5.Sum([]byte(itemUrl)))
+		md5url := "d:/data_center_md5/"
+		for i := 0; i+4 < len(myMd5); i = i + 4 {
+			md5url = md5url + "/" + myMd5[i:i+4]
+		}
+		_, err := os.Stat(md5url)
+		if err == nil {
+			return
+		}
+		err = os.MkdirAll(md5url[:strings.LastIndex(md5url, "/")], os.ModePerm)
+		if err != nil {
+			log.Println(err)
+			return
+		}
 
+		err = ioutil.WriteFile(md5url, []byte("true"), 777)
+		if err != nil {
+			log.Println(err)
+			return 
+		}
 		Manage.Service.Push("add", []DataSourceLib.FieldModel{
 			Manage.DataBase.Table(_this.TableName, ""),
 			Manage.DataBase.Set("url", itemUrl),
@@ -133,7 +157,7 @@ func (_this *collect) Listen() {
 	}
 	for true {
 		if len(_this.Job().Data) == 0 {
-			time.Sleep(20 * time.Second)
+			time.Sleep(10 * time.Second)
 		}
 	}
 }

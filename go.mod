@@ -18,7 +18,6 @@ require (
 	github.com/saintfish/chardet v0.0.0-20120816061221-3af4cd4741ca // indirect
 	github.com/sirupsen/logrus v1.8.1
 	github.com/temoto/robotstxt v1.1.2 // indirect
-	github.com/ti/nasync v1.0.0
 	google.golang.org/appengine v1.6.7 // indirect
 	gopkg.in/yaml.v2 v2.4.0
 )

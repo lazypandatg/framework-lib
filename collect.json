@@ -2,41 +2,11 @@
   {
     "Status":true,
     "Start": "https://bolg.csdn.com/",
-    "TableName": "news_eol_cn",
+    "TableName": "csdn_com",
     "Title": ".title",
     "Content": ".article",
     "Tag ": ".info",
     "Confine": "bolg.csdn.com",
-    "AllUrl": false
-  },
-  {
-    "Status":true,
-    "Start": "https://news.21cn.com/",
-    "TableName": "news_eol_cn",
-    "Title": ".title",
-    "Content": ".article",
-    "Tag ": ".info",
-    "Confine": "news.eol.cn",
-    "AllUrl": false
-  },
-  {
-    "Status":true,
-    "Start": "https://news.21cn.com/",
-    "TableName": "news_eol_cn",
-    "Title": ".title",
-    "Content": ".article",
-    "Tag ": ".info",
-    "Confine": "news.eol.cn",
-    "AllUrl": false
-  },
-  {
-    "Status":true,
-    "Start": "https://news.21cn.com/",
-    "TableName": "news_eol_cn",
-    "Title": ".title",
-    "Content": ".article",
-    "Tag ": ".info",
-    "Confine": "news.eol.cn",
     "AllUrl": false
   },
   {
@@ -56,7 +26,7 @@
     "Title": ".bigpic h1",
     "Content": ".content",
     "Tag ": ".source",
-    "Confine": "edu.china.com.cn",
+    "Confine": "china.com.cn",
     "AllUrl": false
   },
   {
@@ -86,7 +56,7 @@
     "Title": ".title",
     "Content": ".article_text",
     "Tag ": ".articleTag",
-    "Confine": "tom.com",
+    "Confine": "autohome.com.cn",
     "AllUrl": false
   },
   {
