@@ -14,10 +14,12 @@ var Service = &MessageLib.Queue{}
 var Source = &MessageLib.Queue{}
 var Gateway = &MessageLib.Queue{}
 var BatchInsert = &Queue.BatchInsertQueue{TableList: map[string][]MySqlLib.InsertModel{}}
+var DataCenter = &MySqlLib.DataSource{}
 
 func init() {
 	myConfig := load()
 	DataBase.Init(myConfig.DataBase)
+	DataCenter.Init(myConfig.DataCenter)
 	Source.Init(myConfig.Source)
 	Service.Init(myConfig.Service)
 	Gateway.Init(myConfig.Gateway)
