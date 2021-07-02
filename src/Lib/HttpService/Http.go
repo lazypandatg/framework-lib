@@ -18,7 +18,11 @@ func Base() {
 			return
 		}
 		MessageLib.RunFromAction(request.URL.Path, request.Form, func(callResult MessageLib.QueueItem) {
-			writer.Write([]byte(callResult.Data))
+			_, err := writer.Write([]byte(callResult.Data))
+			if err != nil {
+				log.Println(err)
+				return
+			}
 		})
 	})
 
