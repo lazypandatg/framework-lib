@@ -9,7 +9,7 @@ type Config struct {
 	CsdnPool     int               `yaml:"csdn_pool"`
 	ProxyDynamic string            `yaml:"proxy_dynamic"`
 	DataBase     MySqlLib.Config   `yaml:"data_base"`
-	DataCenter     MySqlLib.Config   `yaml:"data_center"`
+	DataCenter   MySqlLib.Config   `yaml:"data_center"`
 	Service      MessageLib.Config `yaml:"service"`
 	Source       MessageLib.Config `yaml:"source"`
 	Gateway      MessageLib.Config `yaml:"gateway"`

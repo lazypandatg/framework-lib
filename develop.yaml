@@ -6,6 +6,12 @@ data_base:
   data_base_name: "data_center"
   user_name: "root"
   user_password: "root"
+data_center:
+  host: "151.106.40.183"
+  port: "3306"
+  data_base_name: "data_center"
+  user_name: "data_center"
+  user_password: "ddzeps6dX2H6zCWj"
 service:
   host: "127.0.0.1"
   port: "6379"
