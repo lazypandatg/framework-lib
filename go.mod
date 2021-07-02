@@ -1,4 +1,4 @@
-module framework-lib
+module  github.com/lazypandatg/framework-lib
 
 go 1.16
 

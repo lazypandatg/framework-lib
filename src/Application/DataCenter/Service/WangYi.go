@@ -2,7 +2,7 @@ package DataCenterService
 
 import (
 	"encoding/json"
-	"framework-lib/src/Application/DataCenter/Model"
+	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Model"
 	"io/ioutil"
 )
 

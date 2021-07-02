@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "framework-lib/src/Application/DataCenter/Control"
-	"framework-lib/src/Lib/HttpService"
-	"framework-lib/src/Manage"
-	_ "framework-lib/src/Manage"
+	_ "github.com/lazypandatg/framework-lib/src/Application/DataCenter/Control"
+	"github.com/lazypandatg/framework-lib/src/Lib/HttpService"
+	"github.com/lazypandatg/framework-lib/src/Manage"
+	_ "github.com/lazypandatg/framework-lib/src/Manage"
 )
 
 func main() {

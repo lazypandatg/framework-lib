@@ -1,8 +1,8 @@
 package Manage
 
 import (
-	"framework-lib/src/Lib/Message"
-	"framework-lib/src/Lib/MySql"
+	"github.com/lazypandatg/framework-lib/src/Lib/Message"
+	"github.com/lazypandatg/framework-lib/src/Lib/MySql"
 )
 
 type Config struct {

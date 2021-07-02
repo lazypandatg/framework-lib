@@ -1,7 +1,7 @@
 package DataCenterService
 
 import (
-	"framework-lib/src/Application/DataCenter/Model"
+	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Model"
 )
 
 var Csdn = DataCenterModel.Collect{QueuePath: "163/list/add", TableName: "a163_list"}

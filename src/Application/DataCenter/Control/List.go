@@ -4,11 +4,11 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	DataCenterModel "framework-lib/src/Application/DataCenter/Model"
-	"framework-lib/src/Application/DataCenter/Service"
-	"framework-lib/src/Lib/DataSource"
-	"framework-lib/src/Lib/Message"
-	"framework-lib/src/Manage"
+	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Model"
+	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Service"
+	"github.com/lazypandatg/framework-lib/src/Lib/DataSource"
+	"github.com/lazypandatg/framework-lib/src/Lib/Message"
+	"github.com/lazypandatg/framework-lib/src/Manage"
 )
 
 var _ = MessageLib.AddAction("add", func(fieldList []DataSourceLib.FieldModel) MessageLib.QueueItem {

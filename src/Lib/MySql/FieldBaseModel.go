@@ -1,8 +1,8 @@
 package MySqlLib
 
 import (
-	"framework-lib/src/Lib/DataSource"
-	"framework-lib/src/Lib/MySql/Config"
+	"github.com/lazypandatg/framework-lib/src/Lib/DataSource"
+	"github.com/lazypandatg/framework-lib/src/Lib/MySql/Config"
 	"strings"
 )
 

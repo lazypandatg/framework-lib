@@ -2,9 +2,9 @@ package Manage
 
 import (
 	"fmt"
-	"framework-lib/src/Lib/Message"
-	"framework-lib/src/Lib/MySql"
-	"framework-lib/src/Lib/Queue"
+	"github.com/lazypandatg/framework-lib/src/Lib/Message"
+	"github.com/lazypandatg/framework-lib/src/Lib/MySql"
+	"github.com/lazypandatg/framework-lib/src/Lib/Queue"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 )

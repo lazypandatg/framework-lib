@@ -4,10 +4,10 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	DataSourceLib "framework-lib/src/Lib/DataSource"
-	MessageLib "framework-lib/src/Lib/Message"
-	"framework-lib/src/Manage"
 	"github.com/gocolly/colly"
+	DataSourceLib "github.com/lazypandatg/framework-lib/src/Lib/DataSource"
+	MessageLib "github.com/lazypandatg/framework-lib/src/Lib/Message"
+	"github.com/lazypandatg/framework-lib/src/Manage"
 	"io/ioutil"
 	"log"
 	"net/url"
@@ -87,7 +87,7 @@ func (_this *collect) JobItem(v List) {
 		err = ioutil.WriteFile(md5url, []byte("true"), 777)
 		if err != nil {
 			log.Println(err)
-			return 
+			return
 		}
 		Manage.Service.Push("add", []DataSourceLib.FieldModel{
 			Manage.DataBase.Table(_this.TableName, ""),
