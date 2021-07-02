@@ -18,7 +18,7 @@ func Base() {
 			return
 		}
 		MessageLib.RunFromAction(request.URL.Path, request.Form, func(callResult MessageLib.QueueItem) {
-			log.Println()
+			writer.Write([]byte(callResult.Data))
 		})
 	})
 

@@ -4,7 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Model"
+	DataCenterModel "github.com/lazypandatg/framework-lib/src/Application/DataCenter/Model"
 	"github.com/lazypandatg/framework-lib/src/Application/DataCenter/Service"
 	"github.com/lazypandatg/framework-lib/src/Lib/DataSource"
 	"github.com/lazypandatg/framework-lib/src/Lib/Message"
