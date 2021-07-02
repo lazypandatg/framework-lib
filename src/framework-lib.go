@@ -19,7 +19,7 @@ func main() {
 	//go DataCenterService.WangYi.Listen()
 	//go DataCenterService.Jyb.Listen()
 	//go DataCenterService.Ithome.Listen()
-
+	//监听
 	go Manage.Service.Listener()
 
 	go HttpService.Base()
