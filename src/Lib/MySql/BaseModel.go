@@ -6,7 +6,7 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
-	"github.com/lazypandatg/framework-lib/src/util/DataType"
+	"github.com/lazypandatg/framework-lib/src/Lib/Util/DataType"
 	_ "github.com/lib/pq"
 	"github.com/sirupsen/logrus"
 	"log"
@@ -51,6 +51,7 @@ func (_this *BaseModel) Connect() error {
 
 func (_this *BaseModel) Select(sql string, Parameter []interface{}, Data interface{}, DataType interface{}) error {
 	rows, err := _this.Connection.Query(sql, Parameter...)
+	defer rows.Close()
 	if err != nil {
 		logrus.Errorln(sql, Parameter)
 		logrus.Errorln(err)
@@ -66,11 +67,13 @@ func (_this *BaseModel) Select(sql string, Parameter []interface{}, Data interfa
 		_ = rows.Scan(values...)
 		setData.Set(reflect.Append(setData, cacheItem))
 	}
+
 	return nil
 }
 
 func (_this *BaseModel) Insert(sql string, Parameter []interface{}) (int64, error) {
 	query, err := _this.Connection.Exec(sql, Parameter...)
+
 	if err != nil {
 		log.Println(err)
 		return -1, err
@@ -96,6 +99,7 @@ func (_this *BaseModel) Update(sql string, Parameter []interface{}) (int64, erro
 
 func (_this *BaseModel) GetOne(sql string, Parameter []interface{}, Data interface{}, DataType interface{}) error {
 	rows, err := _this.Connection.Query(sql, Parameter...)
+	rows.Close()
 	if err != nil {
 		log.Println(err)
 		return err

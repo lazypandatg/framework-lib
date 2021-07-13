@@ -1,8 +1,9 @@
-module  github.com/lazypandatg/framework-lib
+module github.com/lazypandatg/framework-lib
 
 go 1.16
 
 require (
+	github.com/MinoIC/bt-go-sdk v0.1.16
 	github.com/PuerkitoBio/goquery v1.7.0 // indirect
 	github.com/antchfx/htmlquery v1.2.3 // indirect
 	github.com/antchfx/xmlquery v1.3.6 // indirect

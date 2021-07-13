@@ -7,11 +7,14 @@ data_base:
   user_name: "root"
   user_password: "root"
 data_center:
-  host: "151.106.40.183"
+  host: "127.0.0.1"
   port: "3306"
   data_base_name: "data_center"
-  user_name: "data_center"
-  user_password: "ddzeps6dX2H6zCWj"
+  user_name: "root"
+  user_password: "root"
+http_service:
+  host: "0.0.0.0"
+  port: "9701"
 service:
   host: "127.0.0.1"
   port: "6379"
@@ -36,6 +39,7 @@ source:
   pre: "source"
   push_name: "source.push"
   pop_name: "source.push"
+
 
 
 

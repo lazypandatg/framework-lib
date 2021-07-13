@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gocolly/colly"
-	DataSourceLib "github.com/lazypandatg/framework-lib/src/Lib/DataSource"
-	MessageLib "github.com/lazypandatg/framework-lib/src/Lib/Message"
-	"github.com/lazypandatg/framework-lib/src/Manage"
+	"github.com/lazypandatg/framework-lib/src/CoreManage"
+	"github.com/lazypandatg/framework-lib/src/Lib/DataSource"
+	"github.com/lazypandatg/framework-lib/src/Lib/Message"
 	"io/ioutil"
 	"log"
 	"net/url"
@@ -30,8 +30,8 @@ type collect struct {
 }
 
 func (_this *collect) Add(list []DataSourceLib.FieldModel) int64 {
-	list = append(list, Manage.DataBase.Table(_this.TableName, ""))
-	id, err := Manage.DataBase.Insert(list)
+	list = append(list, CoreManage.DataBase.Table(_this.TableName, ""))
+	id, err := CoreManage.DataBase.Insert(list)
 	if err != nil {
 		log.Println(err)
 		return -1
@@ -39,7 +39,6 @@ func (_this *collect) Add(list []DataSourceLib.FieldModel) int64 {
 	return id
 }
 func (_this *collect) JobItem(v List) {
-
 	myUrl, err := url.Parse(strings.Trim(v.Url, " "))
 	//log.Println(err,_this,myUrl )
 	if err != nil {
@@ -89,10 +88,10 @@ func (_this *collect) JobItem(v List) {
 			log.Println(err)
 			return
 		}
-		Manage.Service.Push("add", []DataSourceLib.FieldModel{
-			Manage.DataBase.Table(_this.TableName, ""),
-			Manage.DataBase.Set("url", itemUrl),
-			Manage.DataBase.Set("mark", fmt.Sprintf("%x", md5.Sum([]byte(itemUrl)))),
+		CoreManage.Service.Push("add", []DataSourceLib.FieldModel{
+			CoreManage.DataBase.Table(_this.TableName, ""),
+			CoreManage.DataBase.Set("url", itemUrl),
+			CoreManage.DataBase.Set("mark", fmt.Sprintf("%x", md5.Sum([]byte(itemUrl)))),
 		})
 	})
 	c.OnHTML(_this.Title, func(element *colly.HTMLElement) {
@@ -144,13 +143,13 @@ func (_this *collect) JobItem(v List) {
 }
 func (_this *collect) Listen() {
 	var data string
-	err := Manage.DataBase.Base.GetOneColumn("show tables like '"+_this.TableName+"'", []interface{}{}, &data)
+	err := CoreManage.DataBase.Base.GetOneColumn("show tables like '"+_this.TableName+"'", []interface{}{}, &data)
 	log.Println(data)
 	if err != nil {
 		return
 	}
 	if data == "" {
-		_, err := Manage.DataBase.Base.Connection.Exec("CREATE TABLE `" + _this.TableName + "`  (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,\n  `mark` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,\n  PRIMARY KEY (`id`) USING BTREE,\n  UNIQUE INDEX `mark`(`mark`) USING BTREE\n) CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;")
+		_, err := CoreManage.DataBase.Base.Connection.Exec("CREATE TABLE `" + _this.TableName + "`  (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,\n  `mark` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,\n  PRIMARY KEY (`id`) USING BTREE,\n  UNIQUE INDEX `mark`(`mark`) USING BTREE\n) CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;")
 		if err != nil {
 			return
 		}
@@ -163,10 +162,10 @@ func (_this *collect) Listen() {
 }
 func (_this *collect) Job() MessageLib.QueueItem {
 	var contentList []*List
-	err := Manage.DataBase.Select([]DataSourceLib.FieldModel{
-		Manage.DataBase.Table(_this.TableName, ""),
-		Manage.DataBase.Greater("Id", _this.Min),
-		Manage.DataBase.Page(1, 100),
+	err := CoreManage.DataBase.Select([]DataSourceLib.FieldModel{
+		CoreManage.DataBase.Table(_this.TableName, ""),
+		CoreManage.DataBase.Greater("Id", _this.Min),
+		CoreManage.DataBase.Page(1, 100),
 	}, &contentList, List{})
 	if len(contentList) == 0 && _this.Min == 0 && _this.Start != "" {
 		_this.JobItem(List{Url: _this.Start})

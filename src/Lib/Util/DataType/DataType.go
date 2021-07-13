@@ -3,13 +3,38 @@ package DataTypeUtil
 import (
 	"bytes"
 	"encoding/json"
+	"gopkg.in/yaml.v2"
 	"html/template"
+	"io/ioutil"
 	"log"
 	"reflect"
 	"strconv"
 	"strings"
 )
 
+func JsonFileToStruct(filePath string, data interface{}) error {
+	u, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return err
+	}
+	e := json.Unmarshal(u, data)
+	if e != nil {
+		log.Println(e)
+		return e
+	}
+	return nil
+}
+func YamlFileToStruct(filePath string, data interface{}) error {
+	yamlFile, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return err
+	}
+	err = yaml.Unmarshal(yamlFile, data)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 func ObjectsToJson(data interface{}) string {
 	byte, e := json.Marshal(data)
 	if e != nil {
@@ -95,7 +120,7 @@ func indexOf(a []string, e string) int {
 	}
 	return -1
 }
-func GetField( Columns []string, val reflect.Value, values []interface{}, pre string) {
+func GetField(Columns []string, val reflect.Value, values []interface{}, pre string) {
 	//time.NewTimer()
 	t := GetTypeElem(val.Type())
 	//log.Println(val.String())
